@@ -1,0 +1,643 @@
+/*Pls qado qe boni per style me bo qetu jo inline se tani kur punojna bashk mesim tu e lyp qysh mi bo senet njejt*/
+
+body{
+    background-color: #011628;
+    height: 100%;
+    padding-top: 100px; 
+    padding-bottom: 200px; 
+}
+
+/*Butonat, normali esht i gjelberti button 2 esht i kuqi*/
+button{
+    background-color: #44A1A0;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    height: 35px;
+}
+button:hover{
+    background-color: #6cbdbb;
+}
+.button-2{
+    background-color: #A24465;
+}
+.button-2:hover{
+    background-color: #b76c82;
+}
+
+
+/*textet fonti edhe ngjyra*/
+h1{
+    font-family: 'helvetica', sans-serif;
+    color:white;
+}
+.h1-title{
+    font-family: 'helvetica', sans-serif;
+    color:white;
+    font-size: 52px;
+    font-weight: bold;
+}
+p{
+    font-family: 'helvetica', sans-serif;
+    color:white;
+}
+
+.secondary-text{
+    font-family: 'helvetica', sans-serif;
+    color:#979595;}
+
+h2{
+    font-family: 'helvetica', sans-serif;
+    color:white;
+
+}
+h3{
+    font-family: 'helvetica', sans-serif;
+    color:white;
+
+}
+a{
+    text-decoration: none;
+    color: white;
+    font-family: 'helvetica', sans-serif;
+    font-size: 14px;
+}
+a:hover{
+    color: #44A1A0;
+}
+
+.secondary-a{
+    text-decoration: none;
+    color: #44A1A0;
+    font-family: 'helvetica', sans-serif;
+    font-size: 16px;
+}
+.secondary-a:hover{
+    color: white;
+}
+
+/*Qekjo pjes o veq per nav bar*/
+
+nav{
+    background-color: #010B14;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+}
+
+.navitem{
+    display: inline-block;
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    font-family: 'helvatica', sans-serif;
+}
+
+nav ul{
+    display: flex;
+    align-items: center ;
+    padding: 0 20px;
+    margin: 0;
+    ;
+}
+nav li{
+    display: inline-block;
+    margin-right: 20px;
+    margin-top:20px;
+}
+input[type="search"]{
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    width: 350px;
+}
+#title:hover{
+    color: white;
+}
+
+/*Qekjo pjes o veq per footer*/
+
+footer {
+    background-color: #010B14;
+    color: white;
+    width: 100%;
+    padding: 30px 20px 10px;
+    box-sizing: border-box;
+    font-family: 'Helvetica', sans-serif;
+    position:absolute;
+    left: 0;
+    width: 100%;
+    margin-top:5%;
+}
+
+
+.footer-columns {
+    display: flex;
+    justify-content: center;
+    gap:10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.col {
+    flex: 0 0 auto;
+    margin: 0 70px;
+}
+
+.footer-columns h2 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+}
+
+.footer-columns a {
+    display: block;
+    font-size: 12px;
+    color: white;
+    opacity: 0.6;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.footer-columns a:hover {
+    opacity: 1;
+}
+
+.footer-bottom {
+    font-size: 12px;
+    text-align: center;
+    opacity: 0.6;
+    line-height: 1.5;
+}
+
+/*per game cards*/
+
+#browse-games {
+  width: 57%;
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #010B14 ;
+}
+.game-card {
+    border: 1px solid #333;
+display: flex;
+  flex-direction: row;
+  height: 220px;
+  cursor: pointer;
+}
+.game-card:hover {
+    border-color: #6b6d6d;
+    scale: 1.02;
+}
+.game-card img {
+  height: 100%;
+  width: auto;
+}
+.game-card-info {
+    margin-left: 20px;
+  flex: 1;
+  display: block;
+  flex-direction: row; 
+  padding-right:5px;
+}
+
+.genre-badge {
+  display: inline-block;
+  background-color: #44A1A0;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-right: 5px;
+  margin-top: 5px;
+  opacity: 70%;
+}
+
+
+/*per image edhe privacy page in general*/
+.privacy-kh {
+    width: 100%;
+    max-width: 700px; 
+    margin: 0 auto;     
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.privacy-kh img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.privacy-title {
+    text-align: center;
+}
+
+.privacy-title p{
+    font-size: 18px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 40px;
+    opacity: 50%;
+}
+.game-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    width: 70%;
+    margin: auto;
+}
+
+
+/*per image edhe privacy page in general*/
+.privacy-kh {
+    width: 100%;
+    max-width: 700px; 
+    margin: 0 auto;     
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.privacy-kh img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.privacy-title {
+    text-align: center;
+}
+
+.privacy-title p{
+    font-size: 18px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 40px;
+}
+
+/*per login edhe signup*/
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #010B14;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px 25px;
+    min-width: 320px;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    float: right;
+}
+
+.modal h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-family: 'helvetica', sans-serif;
+    color: white;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-form label {
+    font-size: 14px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.modal-form input {
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+.google-btn {
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.google-btn img {
+    height: 20px;
+    width: 20px;
+}
+
+.google-btn:hover {
+    background: #f7f7f7;
+}
+
+.divider-text {
+    text-align: center;
+    color: #bbb;
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* landing */
+
+/* main section */
+.hero {
+    position: relative;
+    min-height: 110vh;
+    background-image: url("images/ff7.png");
+    background-size: cover !important;
+    background-position: center bottom !important;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px 140px;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    color: white;
+}
+
+.hero-content p {
+    color: #ccc;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* info section */
+.info-section {
+    padding: 80px 80px;
+    background-color: #011628;
+}
+
+.info-row {
+    max-width: 900px;
+    margin: 0 auto 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+
+.info-text {
+    flex: 0 0 48%;
+    text-align: left;
+}
+
+.info-image-wrapper {
+    flex: 0 0 40%;
+    display: flex;
+    justify-content: center;
+}
+
+.info-image {
+    max-width: 260px;
+    height: auto;
+}
+
+@media (max-width: 900px) {
+    .info-row,
+    .info-row.info-row-reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-top: 80px !important;
+    padding-bottom: 200px !important;
+
+    background-color: #011628;
+    overflow-x: hidden;
+}
+
+.hero {
+    min-height: 80vh !important;
+    padding-bottom: 40px !important;
+}
+
+#browse-games {
+    height: auto !important;
+    margin-top: 60px !important;
+}
+/*per profile page*/
+.profile-container {
+    width: 90%;
+    max-width:1000px;
+  margin: 60px auto 60px;
+}
+.profile-header {
+    padding: 10px 0 30px;
+    border-bottom: 1px solid #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.profile-top {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+.profile-user-info {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+.profile-user-info h2 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.edit-profile-btn {
+    padding: 8px 28px;       
+    border: none;
+    background: #5ad4df;     
+    color: white;
+    cursor: pointer;
+    height: 40px;           
+    font-size: 15px;
+    font-weight: 500;     
+}
+.edit-profile-btn:hover {
+    background-color: #7ee4ed;
+}
+
+
+.edit-profile-btn:hover {
+    background-color: #64d6e4;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 45px;   
+}
+
+.profile-stats p {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    font-size: 13px;
+    text-align: left;
+}
+.profile-stats span {
+    display: block;
+    font-size: 22px;
+    color: #b3b3b3;
+    font-weight: 700;
+    font-weight: bold;
+}
+
+.lists-header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-list-btn {
+    background-color: #a24465;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+.create-list-btn:hover {
+    background-color: #b76c82;
+}
+
+.list-block {
+    margin-top: 30px;
+    margin-bottom: 40px; 
+    background-color: #010B14;
+    padding: 25px;
+    border-radius: 8px; 
+}
+.list-block:hover {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    scale: 1.02;;
+}
+.list-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-title-row h3 {
+    color: #A24465;
+}
+
+.see-full {
+    color: #8db8ff;
+    font-size: 14px;
+}
+
+.see-full:hover {
+    color: white;
+}
+
+.list-row {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+}
+
+.list-row img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.list-row img:hover {
+    transform: scale(1.05);
+}
+
+/*game details page*/
+.game-detail-image{
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.copy-link-btn {
+    background-color: #44A1A0;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    height: 30px;
+}

@@ -1,11 +1,4 @@
-/*Pls qado qe boni per style me bo qetu jo inline se tani kur punojna bashk mesim tu e lyp qysh mi bo senet njejt*/
-
-body{
-    background-color: #011628;
-    height: 100%;
-    padding-top: 100px; 
-    padding-bottom: 200px; 
-}
+/* initial body rules consolidated further down (keeps resets and final paddings) */
 
 /*Butonat, normali esht i gjelberti button 2 esht i kuqi*/
 button{
@@ -31,38 +24,24 @@ button:hover{
 
 /*textet fonti edhe ngjyra*/
 h1{
-    font-family: 'helvetica', sans-serif;
     color:white;
 }
 .h1-title{
-    font-family: 'helvetica', sans-serif;
     color:white;
     font-size: 52px;
     font-weight: bold;
 }
-p{
-    font-family: 'helvetica', sans-serif;
-    color:white;
-}
 
 .secondary-text{
-    font-family: 'helvetica', sans-serif;
     color:#979595;}
 
-h2{
-    font-family: 'helvetica', sans-serif;
+h2, h3, a ,p, .secondary-a:hover{
     color:white;
-
 }
-h3{
-    font-family: 'helvetica', sans-serif;
-    color:white;
 
-}
 a{
     text-decoration: none;
-    color: white;
-    font-family: 'helvetica', sans-serif;
+
     font-size: 14px;
 }
 a:hover{
@@ -72,11 +51,7 @@ a:hover{
 .secondary-a{
     text-decoration: none;
     color: #44A1A0;
-    font-family: 'helvetica', sans-serif;
     font-size: 16px;
-}
-.secondary-a:hover{
-    color: white;
 }
 
 /*Qekjo pjes o veq per nav bar*/
@@ -129,7 +104,6 @@ footer {
     width: 100%;
     padding: 30px 20px 10px;
     box-sizing: border-box;
-    font-family: 'Helvetica', sans-serif;
     position:absolute;
     left: 0;
     width: 100%;
@@ -178,11 +152,12 @@ footer {
 /*per game cards*/
 
 #browse-games {
-  width: 57%;
-  margin: auto;
-  margin-top: 100px;
-  padding: 20px;
-  background-color: #010B14 ;
+    width: 57%;
+    margin: auto;
+    margin-top: 60px !important;
+    padding: 20px;
+    background-color: #010B14 ;
+    height: auto !important;
 }
 .game-card {
     border: 1px solid #333;
@@ -220,33 +195,7 @@ display: flex;
 }
 
 
-/*per image edhe privacy page in general*/
-.privacy-kh {
-    width: 100%;
-    max-width: 700px; 
-    margin: 0 auto;     
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #333;
-}
-
-.privacy-kh img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.privacy-title {
-    text-align: center;
-}
-
-.privacy-title p{
-    font-size: 18px;
-    margin-left: 200px;
-    margin-right: 200px;
-    margin-bottom: 40px;
-    opacity: 50%;
-}
+/* privacy styles consolidated later to avoid duplication */
 .game-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -317,7 +266,6 @@ display: flex;
 .modal h2 {
     margin-top: 0;
     margin-bottom: 15px;
-    font-family: 'helvetica', sans-serif;
     color: white;
 }
 
@@ -384,7 +332,7 @@ display: flex;
 /* main section */
 .hero {
     position: relative;
-    min-height: 110vh;
+    min-height: 80vh !important;
     background-image: url("images/ff7.png");
     background-size: cover !important;
     background-position: center bottom !important;
@@ -393,7 +341,7 @@ display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 20px 140px;
+    padding: 0 20px 40px !important;
 }
 
 .hero-content h1 {
@@ -460,17 +408,8 @@ body {
     padding-bottom: 200px !important;
 
     background-color: #011628;
+    font-family: 'helvetica', sans-serif;
     overflow-x: hidden;
-}
-
-.hero {
-    min-height: 80vh !important;
-    padding-bottom: 40px !important;
-}
-
-#browse-games {
-    height: auto !important;
-    margin-top: 60px !important;
 }
 /*per profile page*/
 .profile-container {
@@ -527,11 +466,6 @@ body {
     font-size: 15px;
     font-weight: 500;     
 }
-.edit-profile-btn:hover {
-    background-color: #7ee4ed;
-}
-
-
 .edit-profile-btn:hover {
     background-color: #64d6e4;
 }

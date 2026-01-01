@@ -13,10 +13,10 @@
     <!--navigation bar, e boni copy paste qeta ncdo faqe ever -->
     <nav>
         <ul>
-            <li><img href="#" style="width: 50px; height: 50px; cursor: pointer;" src="images/logo.jpg" alt="Logo"></li>
-            <li><a style="font-size:30px" id="title" href="landing.html">QUEST</a></li>
+            <li><img href="#" class="nav-logo" src="images/logo.jpg" alt="Logo"></li>
+            <li><a id="title" href="landing.html">QUEST</a></li>
 
-            <li style="margin-left: auto;"><a  class="navitem" href="games.html">Browse Games</a></li>
+            <li class="nav-spacer"><a  class="navitem" href="games.html">Browse Games</a></li>
             <li><a class="navitem" href="privacy.html">Our Policy</a></li>
 
             <li><input type="search" placeholder=" Search..."></li>
@@ -34,48 +34,26 @@
             <h2>Log in</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email or username">
-                </label>
-                <label>
-                    Password
-                    <input type="password" placeholder="Enter your password">
-                </label>
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" placeholder="Enter your email or username">
 
-                <div style="margin-bottom: 12px;"></div>
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" placeholder="Enter your password">
+
+                <div class="form-spacer"></div>
 
                 <button type="button" onclick="window.location.href='profile.html'" >Log in</button>
             </form>
 
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                <button id="reset" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Reset password</button>
-
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                No account?
-                <button id="swapToSignup" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Create one</button>
-            </p>
+                <p class="modal-note"><button id="reset" class="link-button">Reset password</button></p>
+                <p class="modal-note">No account? <button id="swapToSignup" class="link-button">Create one</button></p>
         </div>
     </div>
 
@@ -86,69 +64,47 @@
             <h2>Sign Up</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Username
-                    <input type="text" placeholder="Choose a username" >
-                </label>
+                <label for="signup-username">Username</label>
+                <input id="signup-username" name="username" type="text" placeholder="Choose a username" >
 
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email" >
-                </label>
+                <label for="signup-email">Email</label>
+                <input id="signup-email" name="email" type="email" placeholder="Enter your email" >
 
-                <label>
-                    Age
-                    <input type="number" min="1" placeholder="Your age" >
-                </label>
+                <label for="signup-age">Age</label>
+                <input id="signup-age" name="age" type="number" min="1" max="120" placeholder="Your age" >
 
-                <label>
-                    Phone Number
-                    <input type="tel" placeholder="+383 44 123 456" >
-                </label>
+                <label for="signup-phone">Phone Number</label>
+                <input id="signup-phone" name="phone" type="tel" placeholder="+383 44 123 456" >
 
-                <label>
-                    Password
-                    <input type="password" placeholder="Create a password" >
-                </label>
+                <label for="signup-password">Password</label>
+                <input id="signup-password" name="password" type="password" placeholder="Create a password" >
 
-                <label>
-                    Confirm Password
-                    <input type="password" placeholder="Confirm your password" >
-                </label>
+                <label for="signup-confirm">Confirm Password</label>
+                <input id="signup-confirm" name="confirm_password" type="password" placeholder="Confirm your password" >
 
-                <div style="margin-bottom: 12px;"></div>
+                <div class="form-spacer"></div>
 
                 <button type="button" onclick="window.location.href='profile.html'" class="button-2">Create Account</button>
             </form>
 
-            <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                Already a member?
-                <button id="swapToLogin" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Log in!</button>
-            </p>
+            <p class="modal-note">Already a member? <button id="swapToLogin" class="link-button">Log in!</button></p>
         </div>
     </div>
 
 <!-- Page Title -->
-<div style="margin: 40px auto; width: 75%; display: flex; flex-direction: row; margin-bottom: 50px; align-items: center;">
-    <h1 class="h1-title" id="list-title" style="flex-grow: 0.5; margin: 0;">List Name</h1>
+<div class="page-header-row">
+    <h1 class="h1-title page-header-title" id="list-title">List Name</h1>
 </div>
 
 <!-- Games Container -->
-<div style="margin-top: 2%;" class="game-container" id="game-container"></div>
+<div class="game-container section-spacing" id="game-container"></div>
 
 <!-- Footer -->
 <footer>
@@ -196,7 +152,7 @@ async function loadList() {
             <img src="${game.main_image_url}" alt="${game.name}" onerror="this.src='images/games/placeholder.png';">
             <div class="game-card-info">
                 <h3>${game.name}</h3>
-                <p style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;" class="secondary-text">${game.description || ''}</p>
+                <p class="secondary-text">${game.description || ''}</p>
                 <div class="genre-container">
                     ${(game.genres || []).map(genre => `<p class="genre-badge">${genre}</p>`).join('')}
                 </div>

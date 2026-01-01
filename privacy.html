@@ -9,11 +9,11 @@
 <body>
 
     <nav>
-        <ul>
-            <li><img href="#" style="width: 50px; height: 50px; cursor: pointer;" src="images/logo.jpg" alt="Logo"></li>
-            <li><a style="font-size:30px" id="title" href="landing.html">QUEST</a></li>
+        <ul>    
+            <li><img href="#" class="nav-logo" src="images/logo.jpg" alt="Logo"></li>
+            <li><a id="title" href="landing.html">QUEST</a></li>
 
-            <li style="margin-left: auto;"><a  class="navitem" href="games.html">Browse Games</a></li>
+            <li class="nav-spacer"><a  class="navitem" href="games.html">Browse Games</a></li>
             <li><a class="navitem" href="privacy.html">Our Policy</a></li>
 
             <li><input type="search" placeholder=" Search..."></li>
@@ -28,7 +28,7 @@
         <header class="privacy-header">
             <div class="privacy-hero">
                 <div class="privacy-kh">
-                    <img src="images/privacy.png" alt="Privacy Policy illustration">
+                    <img src="images/privacy.png" alt="Privacy Policy illustration" >
                 </div>
                 <div>
                     <h1 class="privacy-title">Privacy Policy</h1>
@@ -157,41 +157,31 @@
             <h2>Log in</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email or username">
-                </label>
-                <label>
-                    Password
-                    <input type="password" placeholder="Enter your password">
-                </label>
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email or username">
 
-                <div style="margin-bottom: 12px;"></div>
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password">
+
+                <div class="form-spacer"></div>
 
                 <button type="button" onclick="window.location.href='profile.html'">Log in</button>
             </form>
 
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                <button id="reset" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Reset password</button>
+                <p class="modal-note">
+                <button id="reset" class="link-button">Reset password</button>
+                            <label for="login-email">Email</label>
+                            <input id="login-email" name="email" type="email" placeholder="Enter your email or username">
 
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                No account?
-                <button id="swapToSignup" style="
-                    background:none;
+                            <label for="login-password">Password</label>
+                            <input id="login-password" name="password" type="password" placeholder="Enter your password">
                     border:none;
                     color:#44A1A0;
                     cursor:pointer;
@@ -209,61 +199,49 @@
             <h2>Sign Up</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Username
-                    <input type="text" placeholder="Choose a username" required>
-                </label>
+                <label>Username</label>
+                <input type="text" placeholder="Choose a username" required>
 
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email">
-                </label>
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email">
 
-                <label>
-                    Age
-                    <input type="number" min="1" placeholder="Your age">
-                </label>
+                <label>Age</label>
+                <input type="number" min="1" placeholder="Your age">
 
-                <label>
-                    Phone Number
-                    <input type="tel" placeholder="+383 44 123 456">
-                </label>
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+383 44 123 456">
 
-                <label>
-                    Password
-                    <input type="password" placeholder="Create a password">
-                </label>
+                <label>Password</label>
+                <input type="password" placeholder="Create a password">
 
-                <label>
-                    Confirm Password
-                    <input type="password" placeholder="Confirm your password" >
-                </label>
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Confirm your password" >
 
-                <div style="margin-bottom: 12px;"></div>
+                <div class="form-spacer"></div>
+                    <label for="signup-username">Username</label>
+                    <input id="signup-username" name="username" type="text" placeholder="Choose a username" required>
 
-                <button type="button" onclick="window.location.href='profile.html'"  class="button-2">Create Account</button>
-            </form>
+                    <label for="signup-email">Email</label>
+                    <input id="signup-email" name="email" type="email" placeholder="Enter your email">
 
-            <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                Already a member?
-                <button id="swapToLogin" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Log in!</button>
-            </p>
-        </div>
-    </div>
+                    <label for="signup-age">Age</label>
+                    <input id="signup-age" name="age" type="number" min="1" max="120" placeholder="Your age">
+
+                    <label for="signup-phone">Phone Number</label>
+                    <input id="signup-phone" name="phone" type="tel" placeholder="+383 44 123 456">
+
+                    <label for="signup-password">Password</label>
+                    <input id="signup-password" name="password" type="password" placeholder="Create a password">
+
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input id="signup-confirm" name="confirm_password" type="password" placeholder="Confirm your password" >
 
 
     <!--footer, e boni copy paste qeta ncdo faqe ever-->

@@ -9,10 +9,10 @@
 <body>
       <nav>
         <ul>
-            <li><img href="#" style="width: 50px; height: 50px; cursor: pointer;" src="images/logo.jpg" alt="Logo"></li>
-            <li><a style="font-size:30px" id="title" href="landing.html">QUEST</a></li>
+            <li><img href="#" class="nav-logo" src="images/logo.jpg" alt="Logo"></li>
+            <li id="title">QUEST</li>
 
-            <li style="margin-left: auto;"><a  class="navitem" href="games.html">Browse Games</a></li>
+            <li class="nav-spacer"><a  class="navitem" href="games.html">Browse Games</a></li>
             <li><a class="navitem" href="privacy.html">Our Policy</a></li>
 
             <li><input type="search" placeholder=" Search..."></li>
@@ -27,7 +27,7 @@
             <div class="profile-top">
                 <img src="images/joker pfp.jpg" class="profile-avatar">
                 <div class="profile-user-info">
-                    <h2 style="color:#FF669C ;">Vesa_B</h2>
+                    <h2 class="accent-pink">User</h2>
                     <button>Edit Profile</button>
                 </div>
             </div>
@@ -56,47 +56,30 @@
             <h2>Log in</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email or username">
-                </label>
-                <label>
-                    Password
-                    <input type="button" onclick="window.location.href='profile.html'" placeholder="Enter your password" >
-                </label>
+                <label for="login-email">Email</label>
+                <input id="login-email" name="email" type="email" placeholder="Enter your email or username">
 
-                <div style="margin-bottom: 12px;"></div>
+                <label for="login-password">Password</label>
+                <input id="login-password" name="password" type="password" placeholder="Enter your password" >
+
+                <div class="form-spacer"></div>
 
                 <button type="submit">Log in</button>
             </form>
 
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                <button id="reset" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Reset password</button>
+                <p class="modal-note">
+                <button id="reset" class="link-button">Reset password</button>
 
-                <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
+                <p class="modal-note">
                 No account?
-                <button id="swapToSignup" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Create one</button>
+                <button id="swapToSignup" class="link-button">Create one</button>
             </p>
         </div>
     </div>
@@ -108,42 +91,30 @@
             <h2>Sign Up</h2>
 
             <button class="google-btn">
-                <img src="images/googleicon.png" alt="Google Icon">
+                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
 
             <p class="divider-text">or</p>
 
             <form class="modal-form">
-                <label>
-                    Username
-                    <input type="text" placeholder="Choose a username">
-                </label>
+                <label for="signup-username">Username</label>
+                <input id="signup-username" name="username" type="text" placeholder="Choose a username">
 
-                <label>
-                    Email
-                    <input type="email" placeholder="Enter your email">
-                </label>
+                <label for="signup-email">Email</label>
+                <input id="signup-email" name="email" type="email" placeholder="Enter your email">
 
-                <label>
-                    Age
-                    <input type="number" min="1" placeholder="Your age">
-                </label>
+                <label for="signup-age">Age</label>
+                <input id="signup-age" name="age" type="number" min="1" max="120" placeholder="Your age">
 
-                <label>
-                    Phone Number
-                    <input type="tel" placeholder="+383 44 123 456">
-                </label>
+                <label for="signup-phone">Phone Number</label>
+                <input id="signup-phone" name="phone" type="tel" placeholder="+383 44 123 456">
 
-                <label>
-                    Password
-                    <input type="password" placeholder="Create a password">
-                </label>
+                <label for="signup-password">Password</label>
+                <input id="signup-password" name="password" type="password" placeholder="Create a password">
 
-                <label>
-                    Confirm Password
-                    <input type="password" placeholder="Confirm your password">
-                </label>
+                <label for="signup-confirm">Confirm Password</label>
+                <input id="signup-confirm" name="confirm_password" type="password" placeholder="Confirm your password">
 
                 <div style="margin-bottom: 12px;"></div>
 
@@ -184,59 +155,6 @@
     </div>
 </footer>
     </div>
-    
-<script>  
-async function loadLists() {
-  const res = await fetch('games.json')
-  const games = await res.json()
-  const container = document.getElementById('lists')
-
-const titles = ["Favorites", "Haven't Finished", "Want to Play"]
-
-  for (let i = 0; i < 3; i++) {
-    const start = i * 6
-    const end = start + 6
-    const picks = games.slice(start, end)
-
-    const block = document.createElement('div')
-    block.className = 'list-block'
-
-
-    const titleRow = document.createElement('div')
-    titleRow.className = 'list-title-row'
-
-const copyBtn = document.createElement('button')
-copyBtn.textContent = 'Copy Link'
-copyBtn.className = 'copy-link-btn'
-copyBtn.onclick = () => {
-    navigator.clipboard.writeText(window.location.href)
-    alert('Link copied!')
-}
-    titleRow.appendChild(copyBtn)
-
-    titleRow.innerHTML = `<h3>${titles[i]}</h3> <a href="lists.html?list=${i}" class="secondary-a">See Full List</a>`
-
-
-    const row = document.createElement('div')
-    row.className = 'list-row'
-
-    for (const g of picks) {
-      const img = document.createElement('img')
-      img.src = g.main_image_url
-      img.onclick = () => {
-        location.href = `details.html?game=${encodeURIComponent(g.name)}`
-      }
-      row.appendChild(img)
-    }
-
-    block.appendChild(titleRow)
-    block.appendChild(row)
-    container.appendChild(block)
-  }
-}
-
-loadLists()
-</script>
 
 <script src="script.js"></script>
 

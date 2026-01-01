@@ -5,11 +5,10 @@ function loadBrowseGames() {
     .then(games => {
       const grid = document.getElementById("browse-grid")
 
-      const four = games
+      const items = games
         .sort(() => Math.random() - 0.5)
-        .slice(0, 4)
 
-      grid.innerHTML = four.map(g => `
+      grid.innerHTML = items.map(g => `
         <div class="game-card" data-name="${g.name}">
           <img src="${g.main_image_url}" alt="">
           <div class="game-card-info">

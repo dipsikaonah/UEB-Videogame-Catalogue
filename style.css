@@ -1,6 +1,10 @@
 /* =====================
    GLOBAL / RESET
 ===================== */
+html {
+    height: 100%;
+}
+
 body {
     margin: 0;
     padding-top: 80px;
@@ -9,6 +13,9 @@ body {
     height: 100%;
     overflow-x: hidden;
     font-family: 'Helvetica', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* =====================
@@ -134,9 +141,11 @@ input[type="search"] {
 footer {
     background-color: #010B14;
     padding: 30px 20px 10px;
-    position: absolute;
+    position: relative;
     width: 100%;
     left: 0;
+    z-index: 10;
+    margin-top: auto;
 }
 
 .footer-columns {
@@ -146,7 +155,7 @@ footer {
     margin: 20px 0;
 }
 
-.col {
+.footer-col {
     margin: 0 70px;
 }
 
@@ -167,7 +176,8 @@ footer {
 .footer-bottom {
     font-size: 12px;
     text-align: center;
-    opacity: 0.6;
+    opacity: 1;
+    color: #979595;
 }
 
 /* 
@@ -310,7 +320,27 @@ footer {
     padding: 0;
 }
 
-/* Apply subtle entrance animations when modal is shown */
+.modal-form,
+.signup-form,
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-form label,
+.modal-form input,
+.signup-form label,
+.signup-form input,
+.auth-form label,
+.auth-form input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* fade */
 .modal {
     animation: fadeInBackdrop 180ms ease;
 }
@@ -319,7 +349,7 @@ footer {
     animation: popIn 200ms cubic-bezier(.2,.9,.2,1);
 }
 
-/* Accessibility: visible focus styles */
+/* focuss*/
 button:focus,
 input:focus,
 .link-button:focus {
@@ -327,12 +357,12 @@ input:focus,
     outline-offset: 2px;
 }
 
-/* Use pseudo-class examples: alternate genre badge styling */
+/* odd tags diff*/
 .genre-badge:nth-child(odd) {
     opacity: 0.85;
 }
 
-/* Make hover+focus states more visible */
+/* hover focus */
 .modal-close:hover,
 .modal-close:focus {
     background: rgba(255,255,255,0.06);
@@ -365,7 +395,7 @@ input:focus,
 
 /* =====================
    PROFILE PAGE
-===================== */
+*/
 .profile-container {
     max-width: 1000px;
     margin: 60px auto;
@@ -434,29 +464,8 @@ input:focus,
     margin-right: 10px;
 }
 
-/* Log in / Sign up */
 
-.modal-form,
-.signup-form,
-.auth-form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
 
-.modal-form label,
-.modal-form input,
-.signup-form label,
-.signup-form input,
-.auth-form label,
-.auth-form input {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    text-align: left;
-}
-
-/* Responsive tweaks */
 @media (max-width: 900px) {
     .info-row,
     .info-row.info-row-reverse {
@@ -465,13 +474,7 @@ input:focus,
     }
 }
 
-/* Added helpers to replace inline styles */
-.nav-logo { width: 50px; height: 50px; cursor: pointer; }
-.nav-spacer { margin-left: auto; }
 .accent-pink { color: #FF669C; }
-.form-spacer { margin-bottom: 12px; }
-.modal-note { color: white; margin-top: 15px; text-align: center; font-size: 14px; }
-.link-button { background:none; border:none; color:#44A1A0; cursor:pointer; font-size:14px; text-decoration:underline; padding:0; }
 .page-header-row { margin: 40px auto; width: 75%; display: flex; flex-direction: row; margin-bottom: 50px; align-items: center; }
 .page-header-title { flex-grow: 0.5; margin: 0; }
 .section-spacing { margin-top: 2%; }

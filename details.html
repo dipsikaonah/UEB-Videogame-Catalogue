@@ -75,7 +75,7 @@
 
                 <div class="form-spacer"></div>
 
-                <button type="button" onclick="window.location.href='profile.html'">Log in</button>
+                <button type="button" id="loginSubmitBtn">Log in</button>
             </form>
 
                 <p class="modal-note"><button id="reset" class="link-button">Reset password</button></p>
@@ -117,7 +117,7 @@
 
                 <div class="form-spacer"></div>
 
-                <button type="button" onclick="window.location.href='profile.html'" class="button-2">Create Account</button>
+                <button type="button" id="createAccountBtn" class="button-2">Create Account</button>
             </form>
 
             <p class="modal-note">Already a member? <button id="swapToLogin" class="link-button">Log in!</button></p>
@@ -192,6 +192,13 @@ fetch('games.json')
         });
         thumbsContainer.appendChild(img);
     });
+
+    const addBtn = document.querySelector('.button-2.full-width');
+    if (addBtn) {
+        addBtn.addEventListener('click', () => {
+            if (window.addGameByName) window.addGameByName(game.name);
+        });
+    }
 })
 .catch(err => console.error(err));
 

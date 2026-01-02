@@ -35,7 +35,7 @@
             <div class="profile-stats">
                 <p><span>103</span>Liked Games</p>
                 <p><span>5</span>Lists</p>
-                <p><span>63</span>Games Saved</p>
+                <p><span id="savedCount">63</span>Games Saved</p>
             </div>
         </div>
 
@@ -44,7 +44,15 @@
             <button class="create-list-btn"> Create a List</button>
         </div>
 
-    <div id="lists"></div>
+    <div class="add-game-panel" style="margin:12px 0; display:flex; gap:8px; align-items:center;">
+        <label for="gameSelect" style="color:white;">Add a game:</label>
+        <select id="gameSelect"><option>Loading...</option></select>
+        <button id="addGameBtn">Add to My Games</button>
+    </div>
+
+    <div id="lists">
+        <div id="savedGames" class="saved-games"></div>
+    </div>
 </section>
 
     <!-- login and signup -->
@@ -55,7 +63,7 @@
             <button class="modal-close">&times;</button>
             <h2>Log in</h2>
 
-            <button class="google-btn">
+                <button class="google-btn">
                 <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
                 Continue with Google
             </button>
@@ -71,7 +79,7 @@
 
                 <div class="form-spacer"></div>
 
-                <button type="submit">Log in</button>
+                <button type="button" id="loginSubmitBtn">Log in</button>
             </form>
 
                 <p class="modal-note">
@@ -118,7 +126,7 @@
 
                 <div style="margin-bottom: 12px;"></div>
 
-                <button type="button" onclick="window.location.href='profile.html'" class="button-2">Create Account</button>
+                <button type="button" id="createAccountBtn" class="button-2">Create Account</button>
             </form>
 
             <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">

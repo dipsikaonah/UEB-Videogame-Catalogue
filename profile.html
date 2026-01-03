@@ -1,170 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <nav>
-        <ul>    
-            <li><img href="#" class="nav-logo" src="images/logo.jpg" alt="Logo"></li>
-            <li><a id="title" href="landing.html">QUEST</a></li>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Profile — QUEST</title>
+        <link rel="stylesheet" href="style.css" />
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
 
-            <li class="nav-spacer"><a  class="navitem" href="games.html">Browse Games</a></li>
-            <li><a class="navitem" href="privacy.html">Our Policy</a></li>
+        <script type="text/babel">
+            const { useState, useEffect } = React;
 
-            <li><input type="search" placeholder=" Search..."></li>
+            function Nav() {
+                return (
+                    <nav>
+                        <ul>
+                            <li>
+                                <img href="#" className="nav-logo" src="images/logo.jpg" alt="Logo" />
+                            </li>
+                            <li>
+                                <a id="title" href="landing.html">QUEST</a>
+                            </li>
+                            <li className="nav-spacer">
+                                <a className="navitem" href="games.html">Browse Games</a>
+                            </li>
+                            <li>
+                                <a className="navitem" href="privacy.html">Our Policy</a>
+                            </li>
+                            <li>
+                                <input type="search" placeholder=" Search..." />
+                            </li>
+                            <li>
+                                <button id="loginBtn">Log in</button>
+                            </li>
+                            <li>
+                                <button id="signupBtn" className="button-2">Sign Up</button>
+                            </li>
+                        </ul>
+                    </nav>
+                );
+            }
 
-            <li><button id="loginBtn">Log in</button></li>
-            <li><button id="signupBtn" class="button-2">Sign Up</button></li>
-        </ul>
-    </nav>
+            function Footer() {
+                return (
+                    <footer>
+                        <div className="footer-columns">
+                            <div className="footer-col">
+                                <h2>QUEST</h2>
+                            </div>
+                            <div className="footer-col">
+                                <a href="#">About Us</a>
+                                <br />
+                                <a href="#">Contact Us</a>
+                            </div>
+                            <div className="footer-col">
+                                <a href="#">Terms of Service</a>
+                                <br />
+                                <a href="privacy.html">Privacy Policy</a>
+                            </div>
+                        </div>
+                        <br />
+                        <div className="footer-bottom">
+                            © 2025 Quest. All rights reserved. Game data and artwork belong to their respective owners.
+                        </div>
+                    </footer>
+                );
+            }
 
-<section class="profile-container">
-        <div class="profile-header">
-            <div class="profile-top">
-                <img src="images/joker pfp.jpg" class="profile-avatar">
-                <div class="profile-user-info">
-                    <h2 class="accent-pink">User</h2>
-                    <button>Edit Profile</button>
-                </div>
-            </div>
+            function Profile() {
+                const [games, setGames] = useState([]);
+                const [saved, setSaved] = useState([]);
+                const [selected, setSelected] = useState('');
 
-            <div class="profile-stats">
-                <p><span>103</span>Liked Games</p>
-                <p><span>5</span>Lists</p>
-                <p><span id="savedCount">63</span>Games Saved</p>
-            </div>
-        </div>
+                // LocalStorage helpers matching script.js behaviour
+                function getUsers() {
+                    try { return JSON.parse(localStorage.getItem('users') || '[]'); }
+                    catch (e) { return []; }
+                }
+                function setUsers(u) { localStorage.setItem('users', JSON.stringify(u)); }
+                function getCurrentUserKey() { return localStorage.getItem('currentUser') || null; }
+                function findUser(key) { if (!key) return null; const users = getUsers(); return users.find(u => u.username === key || u.email === key) || null; }
 
-        <div class="lists-header">
-            <h2>My Lists</h2>
-            <button class="create-list-btn"> Create a List</button>
-        </div>
+                function getSavedGamesLocal() {
+                    const key = getCurrentUserKey();
+                    const user = findUser(key);
+                    if (user) return user.profileGames || [];
+                    try { return JSON.parse(localStorage.getItem('profileGames') || '[]'); }
+                    catch (e) { return []; }
+                }
 
-    <div class="add-game-panel" style="margin:12px 0; display:flex; gap:8px; align-items:center;">
-        <label for="gameSelect" style="color:white;">Add a game:</label>
-        <select id="gameSelect"><option>Loading...</option></select>
-        <button id="addGameBtn">Add to My Games</button>
-    </div>
+                function setSavedGamesLocal(list) {
+                    const key = getCurrentUserKey();
+                    const users = getUsers();
+                    if (key) {
+                        const idx = users.findIndex(u => u.username === key || u.email === key);
+                        if (idx >= 0) {
+                            users[idx].profileGames = list;
+                            setUsers(users);
+                        }
+                    } else {
+                        localStorage.setItem('profileGames', JSON.stringify(list));
+                    }
+                }
 
-    <div id="lists">
-        <div id="savedGames" class="saved-games"></div>
-    </div>
-</section>
+                useEffect(() => {
+                    fetch('games.json')
+                        .then((r) => r.json())
+                        .then((data) => {
+                            setGames(data.slice(0, 50));
+                            if (data && data.length) setSelected(data[0].name || '');
+                            // load saved from localStorage (in case games were added from other pages)
+                            const initialSaved = getSavedGamesLocal();
+                            setSaved(initialSaved);
+                        })
+                        .catch(() => {
+                            setGames([]);
+                        });
+                }, []);
 
-    <!-- login and signup -->
+                function addGame() {
+                    if (!selected) return;
+                    const exists = saved.find((g) => g.name === selected);
+                    if (exists) return;
+                    const gameObj = games.find((g) => g.name === selected);
+                    if (!gameObj) return;
+                    const newSaved = [gameObj, ...saved];
+                    setSaved(newSaved);
+                    setSavedGamesLocal(newSaved);
+                }
 
-     <!-- login -->
-    <div id="loginModal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <h2>Log in</h2>
+                function removeGame(name) {
+                    const filtered = saved.filter(s => s.name !== name);
+                    setSaved(filtered);
+                    setSavedGamesLocal(filtered);
+                }
 
-                <button class="google-btn">
-                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
-                Continue with Google
-            </button>
+                function imageFor(g) {
+                    return g.main_image_url || g.image1 || g.main_image2_url || 'images/games/details/default.jpg';
+                }
 
-            <p class="divider-text">or</p>
+                return (
+                    <section className="profile-container">
+                        <div className="profile-header">
+                            <div className="profile-top">
+                                <img src="images/joker pfp.jpg" className="profile-avatar" alt="avatar" />
+                                <div className="profile-user-info">
+                                    <h2 className="accent-pink">User</h2>
+                                    <button>Edit Profile</button>
+                                </div>
+                            </div>
 
-            <form class="modal-form">
-                <label for="login-email">Email</label>
-                <input id="login-email" name="email" type="email" placeholder="Enter your email or username">
+                            <div className="profile-stats">
+                                <p>
+                                    <span>{103}</span>Liked Games
+                                </p>
+                                <p>
+                                    <span>{5}</span>Lists
+                                </p>
+                                <p>
+                                    <span id="savedCount">{saved.length}</span>Games Saved
+                                </p>
+                            </div>
+                        </div>
 
-                <label for="login-password">Password</label>
-                <input id="login-password" name="password" type="password" placeholder="Enter your password" >
+                        <div className="lists-header">
+                            <h2>My Lists</h2>
+                            <button className="create-list-btn"> Create a List</button>
+                        </div>
 
-                <div class="form-spacer"></div>
+                        <div className="add-game-panel" style={{ margin: '12px 0', display: 'flex', gap: 8, alignItems: 'center' }}>
+                            <label htmlFor="gameSelect" style={{ color: 'white' }}>
+                                Add a game:
+                            </label>
+                            <select id="gameSelect" value={selected} onChange={(e) => setSelected(e.target.value)}>
+                                {games.length === 0 && <option>Loading...</option>}
+                                {games.map((g, idx) => (
+                                    <option key={idx} value={g.name}>
+                                        {g.name}
+                                    </option>
+                                ))}
+                            </select>
+                            <button id="addGameBtn" onClick={addGame}>
+                                Add to My Games
+                            </button>
+                        </div>
 
-                <button type="button" id="loginSubmitBtn">Log in</button>
-            </form>
+                        <div id="lists">
+                            <div id="savedGames" className="saved-games">
+                                {saved.length === 0 && <p style={{ color: 'white' }}>No saved games yet.</p>}
+                                {saved.map((g, i) => (
+                                    <div key={i} className="saved-game-item" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+                                        <img src={imageFor(g)} alt={g.name} style={{ width: 64, height: 64, objectFit: 'cover', marginRight: 12 }} />
+                                        <div style={{ flex: 1 }}>
+                                            <strong style={{ color: 'white' }}>{g.name}</strong>
+                                            <div style={{ color: '#aaa' }}>{(g.genres && g.genres[0]) || ''}</div>
+                                        </div>
+                                        <button onClick={() => removeGame(g.name)} style={{ marginLeft: 12 }}>Remove</button>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+                );
+            }
 
-                <p class="modal-note">
-                <button id="reset" class="link-button">Reset password</button>
+            function App() {
+                return (
+                    <div>
+                        <Nav />
+                        <Profile />
+                        <Footer />
+                    </div>
+                );
+            }
 
-                <p class="modal-note">
-                No account?
-                <button id="swapToSignup" class="link-button">Create one</button>
-            </p>
-        </div>
-    </div>
-
-    <!-- signup -->
-    <div id="signupModal" class="modal hidden">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <h2>Sign Up</h2>
-
-            <button class="google-btn">
-                <img id="googleicon" src="images/googleicon.png" alt="Google Icon">
-                Continue with Google
-            </button>
-
-            <p class="divider-text">or</p>
-
-            <form class="modal-form">
-                <label for="signup-username">Username</label>
-                <input id="signup-username" name="username" type="text" placeholder="Choose a username">
-
-                <label for="signup-email">Email</label>
-                <input id="signup-email" name="email" type="email" placeholder="Enter your email">
-
-                <label for="signup-age">Age</label>
-                <input id="signup-age" name="age" type="number" min="1" max="120" placeholder="Your age">
-
-                <label for="signup-phone">Phone Number</label>
-                <input id="signup-phone" name="phone" type="tel" placeholder="+383 44 123 456">
-
-                <label for="signup-password">Password</label>
-                <input id="signup-password" name="password" type="password" placeholder="Create a password">
-
-                <label for="signup-confirm">Confirm Password</label>
-                <input id="signup-confirm" name="confirm_password" type="password" placeholder="Confirm your password">
-
-                <div style="margin-bottom: 12px;"></div>
-
-                <button type="button" id="createAccountBtn" class="button-2">Create Account</button>
-            </form>
-
-            <p style="color:white; margin-top:15px; text-align:center; font-size:14px;">
-                Already a member?
-                <button id="swapToLogin" style="
-                    background:none;
-                    border:none;
-                    color:#44A1A0;
-                    cursor:pointer;
-                    font-size:14px;
-                    text-decoration:underline;
-                ">Log in!</button>
-            </p>
-        </div>
-    </div>
-
-    <footer>
-        <div class="footer-columns">
-            <div class="footer-col">
-            <h2>QUEST</h2>
-            </div>
-            <div class="footer-col">
-            <a href="#">About Us</a><br>
-            <a href="#">Contact Us</a>
-            </div>
-            <div class="footer-col">
-            <a href="#">Terms of Service</a><br>
-            <a href="privacy.html">Privacy Policy</a>
-            </div>
-        </div>
-        <br>
-        <div class="footer-bottom">
-            © 2025 Quest. All rights reserved. Game data and artwork belong to their respective owners.
-        </div>
-    </footer>
-    </div>
-
-<script src="script.js"></script>
-
-</body>
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(<App />);
+        </script>
+    </body>
 </html>

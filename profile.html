@@ -143,13 +143,17 @@
                     return g.main_image_url || g.image1 || g.main_image2_url || 'images/games/details/default.jpg';
                 }
 
+                const currentKey = getCurrentUserKey();
+                const currentUser = findUser(currentKey);
+                const displayName = (currentUser && (currentUser.username || currentUser.email)) || 'User';
+
                 return (
                     <section className="profile-container">
                         <div className="profile-header">
                             <div className="profile-top">
                                 <img src="images/joker pfp.jpg" className="profile-avatar" alt="avatar" />
                                 <div className="profile-user-info">
-                                    <h2 className="accent-pink">User</h2>
+                                    <h2 className="accent-pink">{displayName}</h2>
                                     <button>Edit Profile</button>
                                 </div>
                             </div>

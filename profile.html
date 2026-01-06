@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Profile — QUEST</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="style.css" />
         <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
         <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
@@ -176,34 +177,39 @@
                             <button className="create-list-btn"> Create a List</button>
                         </div>
 
-                        <div className="add-game-panel" style={{ margin: '12px 0', display: 'flex', gap: 8, alignItems: 'center' }}>
-                            <label htmlFor="gameSelect" style={{ color: 'white' }}>
+                        <div className="add-game-panel mb-4">
+                            <br />
+                            <label htmlFor="gameSelect" className="form-label text-white">
                                 Add a game:
                             </label>
-                            <select id="gameSelect" value={selected} onChange={(e) => setSelected(e.target.value)}>
-                                {games.length === 0 && <option>Loading...</option>}
-                                {games.map((g, idx) => (
-                                    <option key={idx} value={g.name}>
-                                        {g.name}
-                                    </option>
-                                ))}
-                            </select>
-                            <button id="addGameBtn" onClick={addGame}>
-                                Add to My Games
-                            </button>
+                            <div className="d-flex gap-2">
+                                <select id="gameSelect" className="form-select" style={{ flex: '0 1 40%' }} value={selected} onChange={(e) => setSelected(e.target.value)}>
+                                    {games.length === 0 && <option>Loading...</option>}
+                                    {games.map((g, idx) => (
+                                        <option key={idx} value={g.name}>
+                                            {g.name}
+                                        </option>
+                                    ))}
+                                </select>
+                                <button id="addGameBtn" onClick={addGame}>
+                                    Add to My Games
+                                </button>
+                            </div>
                         </div>
 
                         <div id="lists">
                             <div id="savedGames" className="saved-games">
                                 {saved.length === 0 && <p style={{ color: 'white' }}>No saved games yet.</p>}
                                 {saved.map((g, i) => (
-                                    <div key={i} className="saved-game-item" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
-                                        <img src={imageFor(g)} alt={g.name} style={{ width: 64, height: 64, objectFit: 'cover', marginRight: 12 }} />
-                                        <div style={{ flex: 1 }}>
-                                            <strong style={{ color: 'white' }}>{g.name}</strong>
-                                            <div style={{ color: '#aaa' }}>{(g.genres && g.genres[0]) || ''}</div>
+                                    <div key={i} className="card bg-transparent border-secondary" style={{ marginBottom: 12 }}>
+                                        <div className="card-body d-flex align-items-center gap-3">
+                                            <img src={imageFor(g)} alt={g.name} style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: 4 }} />
+                                            <div style={{ flex: 1 }}>
+                                                <h6 className="card-title text-white mb-1">{g.name}</h6>
+                                                <p className="card-text text-secondary small mb-0">{(g.genres && g.genres[0]) || ''}</p>
+                                            </div>
+                                            <button className="btn btn-sm btn-outline-danger" onClick={() => removeGame(g.name)}>Remove</button>
                                         </div>
-                                        <button onClick={() => removeGame(g.name)} style={{ marginLeft: 12 }}>Remove</button>
                                     </div>
                                 ))}
                             </div>
